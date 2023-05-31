@@ -33,3 +33,4 @@ def remove(request, item_id):
     item.delete()
     messages.info(request, "item removed !!!")
     return redirect('todo')
+

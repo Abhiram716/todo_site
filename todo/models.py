@@ -10,7 +10,7 @@ TASK_STATUS = (
 
 class Todo(models.Model):
     title = models.CharField(max_length=100)
-    details = models.TextField()
+    details = models.TextField(max_length=1000)
     date = models.DateTimeField(default=timezone.now)
     taskstatus = models.CharField(
         max_length=20,
