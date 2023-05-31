@@ -17,6 +17,7 @@ class Todo(models.Model):
 	    choices = TASK_STATUS,
 	    default = 'OPEN'
     )
-
+    duedate = models.DateTimeField(default=timezone.now)
+    
     def __str__(self):
         return self.title	
