@@ -59,10 +59,10 @@
                     {{i.details}}
 									 <hr />
                     {{i.date}}
-										<hr />
-										{{i.taskstatus}}
-										<hr />
-										{{i.duedate}}
+                    <hr />
+                    {{i.taskstatus}}
+                    <hr />
+                    {{i.duedate}}
                     <br />
                     <br />
                     <form
@@ -81,6 +81,22 @@
                             remove
                         </button>
                     </form>
+                    <form
+                        action="/update/{{i.id}}"
+                        method="POST"
+                        style="padding-right: 4%; padding-bottom: 3%"
+                    >
+                    {% csrf_token %}
+                    <button
+                        value="update"
+                        type="submit"
+                        class="btn btn-primary"
+                        style="float: right"
+                    >
+                        <span class="glyphicon glyphicon-trash"></span>
+                        update
+                    </button>
+                </form>
                 </div>
                 {% endfor%}
             </div>
