@@ -27,10 +27,23 @@ def index(request):
     return render(request, 'todo/index.html', page)
  
  
-### function to remove item, it receive todo item_id as primary key from url ##
+### function to remove item, it receive todo item_id from url ##
 def remove(request, item_id):
     item = Todo.objects.get(id=item_id)
     item.delete()
     messages.info(request, "item removed !!!")
-    return redirect('todo')
+    return redirect('/')
 
+### function to update item,  it receive todo item_id from url ##
+def update(request, pk):
+	item = Todo.objects.get(id=pk)
+	form = TodoForm(instance=item)
+
+	if request.method == 'POST':
+		form = TodoForm(request.POST, instance=item)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+
+	context =  {'taskEditForm':form}
+	return render(request, 'todo/updateTask.html', context)
